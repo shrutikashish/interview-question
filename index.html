@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript MCQ Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; background: #f4f4f4; }
+    #quiz-container { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h2 { margin-bottom: 1rem; }
+    .option { margin-bottom: 0.5rem; }
+    button { margin-top: 1rem; padding: 0.5rem 1rem; }
+    #result-container { display: none; margin-top: 2rem; }
+    .correct { color: green; }
+    .incorrect { color: red; }
+  </style>
+</head>
+<body oncontextmenu="return false">
+  <div id="quiz-container">
+    <h2 id="question"></h2>
+    <div id="options"></div>
+    <div id="explanation" style="margin-top: 1rem; color: blue;"></div>
+    <button id="checkBtn" onclick="checkAnswer()" style="display:none">Check Answer</button>
+    <div>
+      <button onclick="prevQuestion()">Previous</button>
+      <button id="nextBtn" onclick="nextQuestion()" disabled>Next</button>
+    </div>
+    <p id="timer"></p>
+  </div>
+  <div id="result-container">
+    <h2>Test Complete</h2>
+    <p id="score"></p>
+    <ul id="answers-list"></ul>
+  </div>
+
+  <script>
+
+  const questions = [
+  {
+    "question": "What will the following code print?\nlet a = 1; { let a = 2; console.log(a); }",
+    "options": [
+      "1",
+      "2",
+      "undefined",
+      "ReferenceError"
+    ],
+    "answer": 1,
+    "explanation": "Block-scoped variable `a` inside the block shadows the outer `a`. Output is 2."
+  },
+  {
+    "question": "What happens when you declare the same variable twice using `let`?",
+    "options": [
+      "Overwrites the value",
+      "Throws an error",
+      "Creates a global variable",
+      "Ignores the second declaration"
+    ],
+    "answer": 1,
+    "explanation": "Using `let` to declare a variable twice in the same scope throws a SyntaxError."
+  },
+  {
+    "question": "What will the following code print?\nlet a = 1; { let a = 2; console.log(a); }",
+    "options": [
+      "1",
+      "2",
+      "undefined",
+      "ReferenceError"
+    ],
+    "answer": 1,
+    "explanation": "Block-scoped variable `a` inside the block shadows the outer `a`. Output is 2."
+  },
+  {
+    "question": "What happens when you declare the same variable twice using `let`?",
+    "options": [
+      "Overwrites the value",
+      "Throws an error",
+      "Creates a global variable",
+      "Ignores the second declaration"
+    ],
+    "answer": 1,
+    "explanation": "Using `let` to declare a variable twice in the same scope throws a SyntaxError."
+  },
+  {
+    "question": "What will the following code print?\nlet a = 1; { let a = 2; console.log(a); }",
+    "options": [
+      "1",
+      "2",
+      "undefined",
+      "ReferenceError"
+    ],
+    "answer": 1,
+    "explanation": "Block-scoped variable `a` inside the block shadows the outer `a`. Output is 2."
+  },
+  {
+    "question": "What happens when you declare the same variable twice using `let`?",
+    "options": [
+      "Overwrites the value",
+      "Throws an error",
+      "Creates a global variable",
+      "Ignores the second declaration"
+    ],
+    "answer": 1,
+    "explanation": "Using `let` to declare a variable twice in the same scope throws a SyntaxError."
+  },
+  {
+    "question": "What will the following code print?\nlet a = 1; { let a = 2; console.log(a); }",
+    "options": [
+      "1",
+      "2",
+      "undefined",
+      "ReferenceError"
+    ],
+    "answer": 1,
+    "explanation": "Block-scoped variable `a` inside the block shadows the outer `a`. Output is 2."
+  },
+  {
+    "question": "What happens when you declare the same variable twice using `let`?",
+    "options": [
+      "Overwrites the value",
+      "Throws an error",
+      "Creates a global variable",
+      "Ignores the second declaration"
+    ],
+    "answer": 1,
+    "explanation": "Using `let` to declare a variable twice in the same scope throws a SyntaxError."
+  },
+  {
+    "question": "What will the following code print?\nlet a = 1; { let a = 2; console.log(a); }",
+    "options": [
+      "1",
+      "2",
+      "undefined",
+      "ReferenceError"
+    ],
+    "answer": 1,
+    "explanation": "Block-scoped variable `a` inside the block shadows the outer `a`. Output is 2."
+  },
+  {
+    "question": "What happens when you declare the same variable twice using `let`?",
+    "options": [
+      "Overwrites the value",
+      "Throws an error",
+      "Creates a global variable",
+      "Ignores the second declaration"
+    ],
+    "answer": 1,
+    "explanation": "Using `let` to declare a variable twice in the same scope throws a SyntaxError."
+  },
+  {
+    "question": "What will the following code print?\nlet a = 1; { let a = 2; console.log(a); }",
+    "options": [
+      "1",
+      "2",
+      "undefined",
+      "ReferenceError"
+    ],
+    "answer": 1,
+    "explanation": "Block-scoped variable `a` inside the block shadows the outer `a`. Output is 2."
+  },
+  {
+    "question": "What happens when you declare the same variable twice using `let`?",
+    "options": [
+      "Overwrites the value",
+      "Throws an error",
+      "Creates a global variable",
+      "Ignores the second declaration"
+    ],
+    "answer": 1,
+    "explanation": "Using `let` to declare a variable twice in the same scope throws a SyntaxError."
+  },
+  {
+    "question": "What will the following code print?\nlet a = 1; { let a = 2; console.log(a); }",
+    "options": [
+      "1",
+      "2",
+      "undefined",
+      "ReferenceError"
+    ],
+    "answer": 1,
+    "explanation": "Block-scoped variable `a` inside the block shadows the outer `a`. Output is 2."
+  },
+  {
+    "question": "What happens when you declare the same variable twice using `let`?",
+    "options": [
+      "Overwrites the value",
+      "Throws an error",
+      "Creates a global variable",
+      "Ignores the second declaration"
+    ],
+    "answer": 1,
+    "explanation": "Using `let` to declare a variable twice in the same scope throws a SyntaxError."
+  },
+  {
+    "question": "What will the following code print?\nlet a = 1; { let a = 2; console.log(a); }",
+    "options": [
+      "1",
+      "2",
+      "undefined",
+      "ReferenceError"
+    ],
+    "answer": 1,
+    "explanation": "Block-scoped variable `a` inside the block shadows the outer `a`. Output is 2."
+  },
+  {
+    "question": "What happens when you declare the same variable twice using `let`?",
+    "options": [
+      "Overwrites the value",
+      "Throws an error",
+      "Creates a global variable",
+      "Ignores the second declaration"
+    ],
+    "answer": 1,
+    "explanation": "Using `let` to declare a variable twice in the same scope throws a SyntaxError."
+  },
+  {
+    "question": "What will the following code print?\nlet a = 1; { let a = 2; console.log(a); }",
+    "options": [
+      "1",
+      "2",
+      "undefined",
+      "ReferenceError"
+    ],
+    "answer": 1,
+    "explanation": "Block-scoped variable `a` inside the block shadows the outer `a`. Output is 2."
+  },
+  {
+    "question": "What happens when you declare the same variable twice using `let`?",
+    "options": [
+      "Overwrites the value",
+      "Throws an error",
+      "Creates a global variable",
+      "Ignores the second declaration"
+    ],
+    "answer": 1,
+    "explanation": "Using `let` to declare a variable twice in the same scope throws a SyntaxError."
+  },
+  {
+    "question": "What will the following code print?\nlet a = 1; { let a = 2; console.log(a); }",
+    "options": [
+      "1",
+      "2",
+      "undefined",
+      "ReferenceError"
+    ],
+    "answer": 1,
+    "explanation": "Block-scoped variable `a` inside the block shadows the outer `a`. Output is 2."
+  },
+  {
+    "question": "What happens when you declare the same variable twice using `let`?",
+    "options": [
+      "Overwrites the value",
+      "Throws an error",
+      "Creates a global variable",
+      "Ignores the second declaration"
+    ],
+    "answer": 1,
+    "explanation": "Using `let` to declare a variable twice in the same scope throws a SyntaxError."
+  },
+  {
+    "question": "What is the output of `typeof null`?",
+    "options": [
+      "'null'",
+      "'undefined'",
+      "'object'",
+      "'boolean'"
+    ],
+    "answer": 2,
+    "explanation": "`typeof null` is a known JavaScript quirk; it returns `'object'`."
+  },
+  {
+    "question": "Which type is returned by `typeof NaN`?",
+    "options": [
+      "'NaN'",
+      "'number'",
+      "'undefined'",
+      "'object'"
+    ],
+    "answer": 1,
+    "explanation": "`NaN` is of type `'number'` in JavaScript."
+  },
+  {
+    "question": "What is the output of `typeof null`?",
+    "options": [
+      "'null'",
+      "'undefined'",
+      "'object'",
+      "'boolean'"
+    ],
+    "answer": 2,
+    "explanation": "`typeof null` is a known JavaScript quirk; it returns `'object'`."
+  },
+  {
+    "question": "Which type is returned by `typeof NaN`?",
+    "options": [
+      "'NaN'",
+      "'number'",
+      "'undefined'",
+      "'object'"
+    ],
+    "answer": 1,
+    "explanation": "`NaN` is of type `'number'` in JavaScript."
+  },
+  {
+    "question": "What is the output of `typeof null`?",
+    "options": [
+      "'null'",
+      "'undefined'",
+      "'object'",
+      "'boolean'"
+    ],
+    "answer": 2,
+    "explanation": "`typeof null` is a known JavaScript quirk; it returns `'object'`."
+  },
+  {
+    "question": "Which type is returned by `typeof NaN`?",
+    "options": [
+      "'NaN'",
+      "'number'",
+      "'undefined'",
+      "'object'"
+    ],
+    "answer": 1,
+    "explanation": "`NaN` is of type `'number'` in JavaScript."
+  },
+  {
+    "question": "What is the output of `typeof null`?",
+    "options": [
+      "'null'",
+      "'undefined'",
+      "'object'",
+      "'boolean'"
+    ],
+    "answer": 2,
+    "explanation": "`typeof null` is a known JavaScript quirk; it returns `'object'`."
+  },
+  {
+    "question": "Which type is returned by `typeof NaN`?",
+    "options": [
+      "'NaN'",
+      "'number'",
+      "'undefined'",
+      "'object'"
+    ],
+    "answer": 1,
+    "explanation": "`NaN` is of type `'number'` in JavaScript."
+  },
+  {
+    "question": "What is the output of `typeof null`?",
+    "options": [
+      "'null'",
+      "'undefined'",
+      "'object'",
+      "'boolean'"
+    ],
+    "answer": 2,
+    "explanation": "`typeof null` is a known JavaScript quirk; it returns `'object'`."
+  },
+  {
+    "question": "Which type is returned by `typeof NaN`?",
+    "options": [
+      "'NaN'",
+      "'number'",
+      "'undefined'",
+      "'object'"
+    ],
+    "answer": 1,
+    "explanation": "`NaN` is of type `'number'` in JavaScript."
+  },
+  {
+    "question": "What is the output of `typeof null`?",
+    "options": [
+      "'null'",
+      "'undefined'",
+      "'object'",
+      "'boolean'"
+    ],
+    "answer": 2,
+    "explanation": "`typeof null` is a known JavaScript quirk; it returns `'object'`."
+  },
+  {
+    "question": "Which type is returned by `typeof NaN`?",
+    "options": [
+      "'NaN'",
+      "'number'",
+      "'undefined'",
+      "'object'"
+    ],
+    "answer": 1,
+    "explanation": "`NaN` is of type `'number'` in JavaScript."
+  },
+  {
+    "question": "What is the output of `typeof null`?",
+    "options": [
+      "'null'",
+      "'undefined'",
+      "'object'",
+      "'boolean'"
+    ],
+    "answer": 2,
+    "explanation": "`typeof null` is a known JavaScript quirk; it returns `'object'`."
+  },
+  {
+    "question": "Which type is returned by `typeof NaN`?",
+    "options": [
+      "'NaN'",
+      "'number'",
+      "'undefined'",
+      "'object'"
+    ],
+    "answer": 1,
+    "explanation": "`NaN` is of type `'number'` in JavaScript."
+  },
+  {
+    "question": "What is the output of `typeof null`?",
+    "options": [
+      "'null'",
+      "'undefined'",
+      "'object'",
+      "'boolean'"
+    ],
+    "answer": 2,
+    "explanation": "`typeof null` is a known JavaScript quirk; it returns `'object'`."
+  },
+  {
+    "question": "Which type is returned by `typeof NaN`?",
+    "options": [
+      "'NaN'",
+      "'number'",
+      "'undefined'",
+      "'object'"
+    ],
+    "answer": 1,
+    "explanation": "`NaN` is of type `'number'` in JavaScript."
+  },
+  {
+    "question": "What is the output of `typeof null`?",
+    "options": [
+      "'null'",
+      "'undefined'",
+      "'object'",
+      "'boolean'"
+    ],
+    "answer": 2,
+    "explanation": "`typeof null` is a known JavaScript quirk; it returns `'object'`."
+  },
+  {
+    "question": "Which type is returned by `typeof NaN`?",
+    "options": [
+      "'NaN'",
+      "'number'",
+      "'undefined'",
+      "'object'"
+    ],
+    "answer": 1,
+    "explanation": "`NaN` is of type `'number'` in JavaScript."
+  },
+  {
+    "question": "What is the output of `typeof null`?",
+    "options": [
+      "'null'",
+      "'undefined'",
+      "'object'",
+      "'boolean'"
+    ],
+    "answer": 2,
+    "explanation": "`typeof null` is a known JavaScript quirk; it returns `'object'`."
+  },
+  {
+    "question": "Which type is returned by `typeof NaN`?",
+    "options": [
+      "'NaN'",
+      "'number'",
+      "'undefined'",
+      "'object'"
+    ],
+    "answer": 1,
+    "explanation": "`NaN` is of type `'number'` in JavaScript."
+  },
+  {
+    "question": "What does `2 + true` evaluate to?",
+    "options": [
+      "3",
+      "2",
+      "true2",
+      "NaN"
+    ],
+    "answer": 0,
+    "explanation": "`true` is coerced to 1. So `2 + 1 = 3`."
+  },
+  {
+    "question": "What is the result of `5 && 0`?",
+    "options": [
+      "5",
+      "0",
+      "true",
+      "false"
+    ],
+    "answer": 1,
+    "explanation": "`&&` returns the first falsy value. Since 0 is falsy, it returns 0."
+  },
+  {
+    "question": "What does `2 + true` evaluate to?",
+    "options": [
+      "3",
+      "2",
+      "true2",
+      "NaN"
+    ],
+    "answer": 0,
+    "explanation": "`true` is coerced to 1. So `2 + 1 = 3`."
+  },
+  {
+    "question": "What is the result of `5 && 0`?",
+    "options": [
+      "5",
+      "0",
+      "true",
+      "false"
+    ],
+    "answer": 1,
+    "explanation": "`&&` returns the first falsy value. Since 0 is falsy, it returns 0."
+  },
+  {
+    "question": "What does `2 + true` evaluate to?",
+    "options": [
+      "3",
+      "2",
+      "true2",
+      "NaN"
+    ],
+    "answer": 0,
+    "explanation": "`true` is coerced to 1. So `2 + 1 = 3`."
+  },
+  {
+    "question": "What is the result of `5 && 0`?",
+    "options": [
+      "5",
+      "0",
+      "true",
+      "false"
+    ],
+    "answer": 1,
+    "explanation": "`&&` returns the first falsy value. Since 0 is falsy, it returns 0."
+  },
+  {
+    "question": "What does `2 + true` evaluate to?",
+    "options": [
+      "3",
+      "2",
+      "true2",
+      "NaN"
+    ],
+    "answer": 0,
+    "explanation": "`true` is coerced to 1. So `2 + 1 = 3`."
+  },
+  {
+    "question": "What is the result of `5 && 0`?",
+    "options": [
+      "5",
+      "0",
+      "true",
+      "false"
+    ],
+    "answer": 1,
+    "explanation": "`&&` returns the first falsy value. Since 0 is falsy, it returns 0."
+  },
+  {
+    "question": "What does `2 + true` evaluate to?",
+    "options": [
+      "3",
+      "2",
+      "true2",
+      "NaN"
+    ],
+    "answer": 0,
+    "explanation": "`true` is coerced to 1. So `2 + 1 = 3`."
+  },
+  {
+    "question": "What is the result of `5 && 0`?",
+    "options": [
+      "5",
+      "0",
+      "true",
+      "false"
+    ],
+    "answer": 1,
+    "explanation": "`&&` returns the first falsy value. Since 0 is falsy, it returns 0."
+  },
+  {
+    "question": "What does `2 + true` evaluate to?",
+    "options": [
+      "3",
+      "2",
+      "true2",
+      "NaN"
+    ],
+    "answer": 0,
+    "explanation": "`true` is coerced to 1. So `2 + 1 = 3`."
+  },
+  {
+    "question": "What is the result of `5 && 0`?",
+    "options": [
+      "5",
+      "0",
+      "true",
+      "false"
+    ],
+    "answer": 1,
+    "explanation": "`&&` returns the first falsy value. Since 0 is falsy, it returns 0."
+  },
+  {
+    "question": "What does `2 + true` evaluate to?",
+    "options": [
+      "3",
+      "2",
+      "true2",
+      "NaN"
+    ],
+    "answer": 0,
+    "explanation": "`true` is coerced to 1. So `2 + 1 = 3`."
+  },
+  {
+    "question": "What is the result of `5 && 0`?",
+    "options": [
+      "5",
+      "0",
+      "true",
+      "false"
+    ],
+    "answer": 1,
+    "explanation": "`&&` returns the first falsy value. Since 0 is falsy, it returns 0."
+  },
+  {
+    "question": "What does `2 + true` evaluate to?",
+    "options": [
+      "3",
+      "2",
+      "true2",
+      "NaN"
+    ],
+    "answer": 0,
+    "explanation": "`true` is coerced to 1. So `2 + 1 = 3`."
+  },
+  {
+    "question": "What is the result of `5 && 0`?",
+    "options": [
+      "5",
+      "0",
+      "true",
+      "false"
+    ],
+    "answer": 1,
+    "explanation": "`&&` returns the first falsy value. Since 0 is falsy, it returns 0."
+  },
+  {
+    "question": "What does `2 + true` evaluate to?",
+    "options": [
+      "3",
+      "2",
+      "true2",
+      "NaN"
+    ],
+    "answer": 0,
+    "explanation": "`true` is coerced to 1. So `2 + 1 = 3`."
+  },
+  {
+    "question": "What is the result of `5 && 0`?",
+    "options": [
+      "5",
+      "0",
+      "true",
+      "false"
+    ],
+    "answer": 1,
+    "explanation": "`&&` returns the first falsy value. Since 0 is falsy, it returns 0."
+  },
+  {
+    "question": "What does `2 + true` evaluate to?",
+    "options": [
+      "3",
+      "2",
+      "true2",
+      "NaN"
+    ],
+    "answer": 0,
+    "explanation": "`true` is coerced to 1. So `2 + 1 = 3`."
+  },
+  {
+    "question": "What is the result of `5 && 0`?",
+    "options": [
+      "5",
+      "0",
+      "true",
+      "false"
+    ],
+    "answer": 1,
+    "explanation": "`&&` returns the first falsy value. Since 0 is falsy, it returns 0."
+  },
+  {
+    "question": "What is output of this code?\nlet x = 10; if (x = 5) { console.log('Five'); }",
+    "options": [
+      "Five",
+      "Error",
+      "Nothing",
+      "undefined"
+    ],
+    "answer": 0,
+    "explanation": "`=` is assignment, not comparison. x is set to 5, which is truthy, so 'Five' is logged."
+  },
+  {
+    "question": "Which is correct way to compare values and types in JavaScript?",
+    "options": [
+      "x = y",
+      "x == y",
+      "x === y",
+      "x != y"
+    ],
+    "answer": 2,
+    "explanation": "`===` ensures both value and type are equal."
+  },
+  {
+    "question": "What is output of this code?\nlet x = 10; if (x = 5) { console.log('Five'); }",
+    "options": [
+      "Five",
+      "Error",
+      "Nothing",
+      "undefined"
+    ],
+    "answer": 0,
+    "explanation": "`=` is assignment, not comparison. x is set to 5, which is truthy, so 'Five' is logged."
+  },
+  {
+    "question": "Which is correct way to compare values and types in JavaScript?",
+    "options": [
+      "x = y",
+      "x == y",
+      "x === y",
+      "x != y"
+    ],
+    "answer": 2,
+    "explanation": "`===` ensures both value and type are equal."
+  },
+  {
+    "question": "What is output of this code?\nlet x = 10; if (x = 5) { console.log('Five'); }",
+    "options": [
+      "Five",
+      "Error",
+      "Nothing",
+      "undefined"
+    ],
+    "answer": 0,
+    "explanation": "`=` is assignment, not comparison. x is set to 5, which is truthy, so 'Five' is logged."
+  },
+  {
+    "question": "Which is correct way to compare values and types in JavaScript?",
+    "options": [
+      "x = y",
+      "x == y",
+      "x === y",
+      "x != y"
+    ],
+    "answer": 2,
+    "explanation": "`===` ensures both value and type are equal."
+  },
+  {
+    "question": "What is output of this code?\nlet x = 10; if (x = 5) { console.log('Five'); }",
+    "options": [
+      "Five",
+      "Error",
+      "Nothing",
+      "undefined"
+    ],
+    "answer": 0,
+    "explanation": "`=` is assignment, not comparison. x is set to 5, which is truthy, so 'Five' is logged."
+  },
+  {
+    "question": "Which is correct way to compare values and types in JavaScript?",
+    "options": [
+      "x = y",
+      "x == y",
+      "x === y",
+      "x != y"
+    ],
+    "answer": 2,
+    "explanation": "`===` ensures both value and type are equal."
+  },
+  {
+    "question": "What is output of this code?\nlet x = 10; if (x = 5) { console.log('Five'); }",
+    "options": [
+      "Five",
+      "Error",
+      "Nothing",
+      "undefined"
+    ],
+    "answer": 0,
+    "explanation": "`=` is assignment, not comparison. x is set to 5, which is truthy, so 'Five' is logged."
+  },
+  {
+    "question": "Which is correct way to compare values and types in JavaScript?",
+    "options": [
+      "x = y",
+      "x == y",
+      "x === y",
+      "x != y"
+    ],
+    "answer": 2,
+    "explanation": "`===` ensures both value and type are equal."
+  },
+  {
+    "question": "What is output of this code?\nlet x = 10; if (x = 5) { console.log('Five'); }",
+    "options": [
+      "Five",
+      "Error",
+      "Nothing",
+      "undefined"
+    ],
+    "answer": 0,
+    "explanation": "`=` is assignment, not comparison. x is set to 5, which is truthy, so 'Five' is logged."
+  },
+  {
+    "question": "Which is correct way to compare values and types in JavaScript?",
+    "options": [
+      "x = y",
+      "x == y",
+      "x === y",
+      "x != y"
+    ],
+    "answer": 2,
+    "explanation": "`===` ensures both value and type are equal."
+  },
+  {
+    "question": "What is output of this code?\nlet x = 10; if (x = 5) { console.log('Five'); }",
+    "options": [
+      "Five",
+      "Error",
+      "Nothing",
+      "undefined"
+    ],
+    "answer": 0,
+    "explanation": "`=` is assignment, not comparison. x is set to 5, which is truthy, so 'Five' is logged."
+  },
+  {
+    "question": "Which is correct way to compare values and types in JavaScript?",
+    "options": [
+      "x = y",
+      "x == y",
+      "x === y",
+      "x != y"
+    ],
+    "answer": 2,
+    "explanation": "`===` ensures both value and type are equal."
+  },
+  {
+    "question": "What is output of this code?\nlet x = 10; if (x = 5) { console.log('Five'); }",
+    "options": [
+      "Five",
+      "Error",
+      "Nothing",
+      "undefined"
+    ],
+    "answer": 0,
+    "explanation": "`=` is assignment, not comparison. x is set to 5, which is truthy, so 'Five' is logged."
+  },
+  {
+    "question": "Which is correct way to compare values and types in JavaScript?",
+    "options": [
+      "x = y",
+      "x == y",
+      "x === y",
+      "x != y"
+    ],
+    "answer": 2,
+    "explanation": "`===` ensures both value and type are equal."
+  },
+  {
+    "question": "What is output of this code?\nlet x = 10; if (x = 5) { console.log('Five'); }",
+    "options": [
+      "Five",
+      "Error",
+      "Nothing",
+      "undefined"
+    ],
+    "answer": 0,
+    "explanation": "`=` is assignment, not comparison. x is set to 5, which is truthy, so 'Five' is logged."
+  },
+  {
+    "question": "Which is correct way to compare values and types in JavaScript?",
+    "options": [
+      "x = y",
+      "x == y",
+      "x === y",
+      "x != y"
+    ],
+    "answer": 2,
+    "explanation": "`===` ensures both value and type are equal."
+  },
+  {
+    "question": "What is output of this code?\nlet x = 10; if (x = 5) { console.log('Five'); }",
+    "options": [
+      "Five",
+      "Error",
+      "Nothing",
+      "undefined"
+    ],
+    "answer": 0,
+    "explanation": "`=` is assignment, not comparison. x is set to 5, which is truthy, so 'Five' is logged."
+  },
+  {
+    "question": "Which is correct way to compare values and types in JavaScript?",
+    "options": [
+      "x = y",
+      "x == y",
+      "x === y",
+      "x != y"
+    ],
+    "answer": 2,
+    "explanation": "`===` ensures both value and type are equal."
+  },
+  {
+    "question": "What is output of [1,2,3].map(x => x * 2)?",
+    "options": [
+      "[2,4,6]",
+      "[1,4,9]",
+      "[1,2,3]",
+      "[2,2,2]"
+    ],
+    "answer": 0,
+    "explanation": "The `map()` method applies the function to each element."
+  },
+  {
+    "question": "What does `[].push(1,2)` return?",
+    "options": [
+      "1",
+      "2",
+      "[1,2]",
+      "undefined"
+    ],
+    "answer": 1,
+    "explanation": "`push` returns the new length of the array, which is 2."
+  },
+  {
+    "question": "What is output of [1,2,3].map(x => x * 2)?",
+    "options": [
+      "[2,4,6]",
+      "[1,4,9]",
+      "[1,2,3]",
+      "[2,2,2]"
+    ],
+    "answer": 0,
+    "explanation": "The `map()` method applies the function to each element."
+  },
+  {
+    "question": "What does `[].push(1,2)` return?",
+    "options": [
+      "1",
+      "2",
+      "[1,2]",
+      "undefined"
+    ],
+    "answer": 1,
+    "explanation": "`push` returns the new length of the array, which is 2."
+  },
+  {
+    "question": "What is output of [1,2,3].map(x => x * 2)?",
+    "options": [
+      "[2,4,6]",
+      "[1,4,9]",
+      "[1,2,3]",
+      "[2,2,2]"
+    ],
+    "answer": 0,
+    "explanation": "The `map()` method applies the function to each element."
+  },
+  {
+    "question": "What does `[].push(1,2)` return?",
+    "options": [
+      "1",
+      "2",
+      "[1,2]",
+      "undefined"
+    ],
+    "answer": 1,
+    "explanation": "`push` returns the new length of the array, which is 2."
+  },
+  {
+    "question": "What is output of [1,2,3].map(x => x * 2)?",
+    "options": [
+      "[2,4,6]",
+      "[1,4,9]",
+      "[1,2,3]",
+      "[2,2,2]"
+    ],
+    "answer": 0,
+    "explanation": "The `map()` method applies the function to each element."
+  },
+  {
+    "question": "What does `[].push(1,2)` return?",
+    "options": [
+      "1",
+      "2",
+      "[1,2]",
+      "undefined"
+    ],
+    "answer": 1,
+    "explanation": "`push` returns the new length of the array, which is 2."
+  },
+  {
+    "question": "What is output of [1,2,3].map(x => x * 2)?",
+    "options": [
+      "[2,4,6]",
+      "[1,4,9]",
+      "[1,2,3]",
+      "[2,2,2]"
+    ],
+    "answer": 0,
+    "explanation": "The `map()` method applies the function to each element."
+  },
+  {
+    "question": "What does `[].push(1,2)` return?",
+    "options": [
+      "1",
+      "2",
+      "[1,2]",
+      "undefined"
+    ],
+    "answer": 1,
+    "explanation": "`push` returns the new length of the array, which is 2."
+  },
+  {
+    "question": "What is output of [1,2,3].map(x => x * 2)?",
+    "options": [
+      "[2,4,6]",
+      "[1,4,9]",
+      "[1,2,3]",
+      "[2,2,2]"
+    ],
+    "answer": 0,
+    "explanation": "The `map()` method applies the function to each element."
+  },
+  {
+    "question": "What does `[].push(1,2)` return?",
+    "options": [
+      "1",
+      "2",
+      "[1,2]",
+      "undefined"
+    ],
+    "answer": 1,
+    "explanation": "`push` returns the new length of the array, which is 2."
+  },
+  {
+    "question": "What is output of [1,2,3].map(x => x * 2)?",
+    "options": [
+      "[2,4,6]",
+      "[1,4,9]",
+      "[1,2,3]",
+      "[2,2,2]"
+    ],
+    "answer": 0,
+    "explanation": "The `map()` method applies the function to each element."
+  },
+  {
+    "question": "What does `[].push(1,2)` return?",
+    "options": [
+      "1",
+      "2",
+      "[1,2]",
+      "undefined"
+    ],
+    "answer": 1,
+    "explanation": "`push` returns the new length of the array, which is 2."
+  },
+  {
+    "question": "What is output of [1,2,3].map(x => x * 2)?",
+    "options": [
+      "[2,4,6]",
+      "[1,4,9]",
+      "[1,2,3]",
+      "[2,2,2]"
+    ],
+    "answer": 0,
+    "explanation": "The `map()` method applies the function to each element."
+  },
+  {
+    "question": "What does `[].push(1,2)` return?",
+    "options": [
+      "1",
+      "2",
+      "[1,2]",
+      "undefined"
+    ],
+    "answer": 1,
+    "explanation": "`push` returns the new length of the array, which is 2."
+  },
+  {
+    "question": "What is output of [1,2,3].map(x => x * 2)?",
+    "options": [
+      "[2,4,6]",
+      "[1,4,9]",
+      "[1,2,3]",
+      "[2,2,2]"
+    ],
+    "answer": 0,
+    "explanation": "The `map()` method applies the function to each element."
+  },
+  {
+    "question": "What does `[].push(1,2)` return?",
+    "options": [
+      "1",
+      "2",
+      "[1,2]",
+      "undefined"
+    ],
+    "answer": 1,
+    "explanation": "`push` returns the new length of the array, which is 2."
+  },
+  {
+    "question": "What is output of [1,2,3].map(x => x * 2)?",
+    "options": [
+      "[2,4,6]",
+      "[1,4,9]",
+      "[1,2,3]",
+      "[2,2,2]"
+    ],
+    "answer": 0,
+    "explanation": "The `map()` method applies the function to each element."
+  },
+  {
+    "question": "What does `[].push(1,2)` return?",
+    "options": [
+      "1",
+      "2",
+      "[1,2]",
+      "undefined"
+    ],
+    "answer": 1,
+    "explanation": "`push` returns the new length of the array, which is 2."
+  },
+  {
+    "question": "'hello'.charAt(1) returns?",
+    "options": [
+      "'h'",
+      "'e'",
+      "'l'",
+      "'o'"
+    ],
+    "answer": 2,
+    "explanation": "`charAt(1)` returns the second character: 'l'."
+  },
+  {
+    "question": "'abc'.replace('b', 'x') results in?",
+    "options": [
+      "'axc'",
+      "'xbc'",
+      "'ac'",
+      "'abx'"
+    ],
+    "answer": 0,
+    "explanation": "`replace()` replaces first match: 'abc' becomes 'axc'."
+  },
+  {
+    "question": "'hello'.charAt(1) returns?",
+    "options": [
+      "'h'",
+      "'e'",
+      "'l'",
+      "'o'"
+    ],
+    "answer": 2,
+    "explanation": "`charAt(1)` returns the second character: 'l'."
+  },
+  {
+    "question": "'abc'.replace('b', 'x') results in?",
+    "options": [
+      "'axc'",
+      "'xbc'",
+      "'ac'",
+      "'abx'"
+    ],
+    "answer": 0,
+    "explanation": "`replace()` replaces first match: 'abc' becomes 'axc'."
+  },
+  {
+    "question": "'hello'.charAt(1) returns?",
+    "options": [
+      "'h'",
+      "'e'",
+      "'l'",
+      "'o'"
+    ],
+    "answer": 2,
+    "explanation": "`charAt(1)` returns the second character: 'l'."
+  },
+  {
+    "question": "'abc'.replace('b', 'x') results in?",
+    "options": [
+      "'axc'",
+      "'xbc'",
+      "'ac'",
+      "'abx'"
+    ],
+    "answer": 0,
+    "explanation": "`replace()` replaces first match: 'abc' becomes 'axc'."
+  },
+  {
+    "question": "'hello'.charAt(1) returns?",
+    "options": [
+      "'h'",
+      "'e'",
+      "'l'",
+      "'o'"
+    ],
+    "answer": 2,
+    "explanation": "`charAt(1)` returns the second character: 'l'."
+  },
+  {
+    "question": "'abc'.replace('b', 'x') results in?",
+    "options": [
+      "'axc'",
+      "'xbc'",
+      "'ac'",
+      "'abx'"
+    ],
+    "answer": 0,
+    "explanation": "`replace()` replaces first match: 'abc' becomes 'axc'."
+  },
+  {
+    "question": "'hello'.charAt(1) returns?",
+    "options": [
+      "'h'",
+      "'e'",
+      "'l'",
+      "'o'"
+    ],
+    "answer": 2,
+    "explanation": "`charAt(1)` returns the second character: 'l'."
+  },
+  {
+    "question": "'abc'.replace('b', 'x') results in?",
+    "options": [
+      "'axc'",
+      "'xbc'",
+      "'ac'",
+      "'abx'"
+    ],
+    "answer": 0,
+    "explanation": "`replace()` replaces first match: 'abc' becomes 'axc'."
+  },
+  {
+    "question": "'hello'.charAt(1) returns?",
+    "options": [
+      "'h'",
+      "'e'",
+      "'l'",
+      "'o'"
+    ],
+    "answer": 2,
+    "explanation": "`charAt(1)` returns the second character: 'l'."
+  },
+  {
+    "question": "'abc'.replace('b', 'x') results in?",
+    "options": [
+      "'axc'",
+      "'xbc'",
+      "'ac'",
+      "'abx'"
+    ],
+    "answer": 0,
+    "explanation": "`replace()` replaces first match: 'abc' becomes 'axc'."
+  },
+  {
+    "question": "'hello'.charAt(1) returns?",
+    "options": [
+      "'h'",
+      "'e'",
+      "'l'",
+      "'o'"
+    ],
+    "answer": 2,
+    "explanation": "`charAt(1)` returns the second character: 'l'."
+  },
+  {
+    "question": "'abc'.replace('b', 'x') results in?",
+    "options": [
+      "'axc'",
+      "'xbc'",
+      "'ac'",
+      "'abx'"
+    ],
+    "answer": 0,
+    "explanation": "`replace()` replaces first match: 'abc' becomes 'axc'."
+  },
+  {
+    "question": "'hello'.charAt(1) returns?",
+    "options": [
+      "'h'",
+      "'e'",
+      "'l'",
+      "'o'"
+    ],
+    "answer": 2,
+    "explanation": "`charAt(1)` returns the second character: 'l'."
+  },
+  {
+    "question": "'abc'.replace('b', 'x') results in?",
+    "options": [
+      "'axc'",
+      "'xbc'",
+      "'ac'",
+      "'abx'"
+    ],
+    "answer": 0,
+    "explanation": "`replace()` replaces first match: 'abc' becomes 'axc'."
+  },
+  {
+    "question": "'hello'.charAt(1) returns?",
+    "options": [
+      "'h'",
+      "'e'",
+      "'l'",
+      "'o'"
+    ],
+    "answer": 2,
+    "explanation": "`charAt(1)` returns the second character: 'l'."
+  },
+  {
+    "question": "'abc'.replace('b', 'x') results in?",
+    "options": [
+      "'axc'",
+      "'xbc'",
+      "'ac'",
+      "'abx'"
+    ],
+    "answer": 0,
+    "explanation": "`replace()` replaces first match: 'abc' becomes 'axc'."
+  },
+  {
+    "question": "'hello'.charAt(1) returns?",
+    "options": [
+      "'h'",
+      "'e'",
+      "'l'",
+      "'o'"
+    ],
+    "answer": 2,
+    "explanation": "`charAt(1)` returns the second character: 'l'."
+  },
+  {
+    "question": "'abc'.replace('b', 'x') results in?",
+    "options": [
+      "'axc'",
+      "'xbc'",
+      "'ac'",
+      "'abx'"
+    ],
+    "answer": 0,
+    "explanation": "`replace()` replaces first match: 'abc' becomes 'axc'."
+  },
+  {
+    "question": "Which method is used to select an element by ID?",
+    "options": [
+      "getElementById()",
+      "querySelector()",
+      "getElementByClass()",
+      "getElement()"
+    ],
+    "answer": 0,
+    "explanation": "`document.getElementById('id')` selects element by ID."
+  },
+  {
+    "question": "What will `document.querySelector('p')` return?",
+    "options": [
+      "All p tags",
+      "The first p tag",
+      "null",
+      "An array of p tags"
+    ],
+    "answer": 1,
+    "explanation": "`querySelector()` returns the first match."
+  },
+  {
+    "question": "Which method is used to select an element by ID?",
+    "options": [
+      "getElementById()",
+      "querySelector()",
+      "getElementByClass()",
+      "getElement()"
+    ],
+    "answer": 0,
+    "explanation": "`document.getElementById('id')` selects element by ID."
+  },
+  {
+    "question": "What will `document.querySelector('p')` return?",
+    "options": [
+      "All p tags",
+      "The first p tag",
+      "null",
+      "An array of p tags"
+    ],
+    "answer": 1,
+    "explanation": "`querySelector()` returns the first match."
+  },
+  {
+    "question": "Which method is used to select an element by ID?",
+    "options": [
+      "getElementById()",
+      "querySelector()",
+      "getElementByClass()",
+      "getElement()"
+    ],
+    "answer": 0,
+    "explanation": "`document.getElementById('id')` selects element by ID."
+  },
+  {
+    "question": "What will `document.querySelector('p')` return?",
+    "options": [
+      "All p tags",
+      "The first p tag",
+      "null",
+      "An array of p tags"
+    ],
+    "answer": 1,
+    "explanation": "`querySelector()` returns the first match."
+  },
+  {
+    "question": "Which method is used to select an element by ID?",
+    "options": [
+      "getElementById()",
+      "querySelector()",
+      "getElementByClass()",
+      "getElement()"
+    ],
+    "answer": 0,
+    "explanation": "`document.getElementById('id')` selects element by ID."
+  },
+  {
+    "question": "What will `document.querySelector('p')` return?",
+    "options": [
+      "All p tags",
+      "The first p tag",
+      "null",
+      "An array of p tags"
+    ],
+    "answer": 1,
+    "explanation": "`querySelector()` returns the first match."
+  },
+  {
+    "question": "Which method is used to select an element by ID?",
+    "options": [
+      "getElementById()",
+      "querySelector()",
+      "getElementByClass()",
+      "getElement()"
+    ],
+    "answer": 0,
+    "explanation": "`document.getElementById('id')` selects element by ID."
+  },
+  {
+    "question": "What will `document.querySelector('p')` return?",
+    "options": [
+      "All p tags",
+      "The first p tag",
+      "null",
+      "An array of p tags"
+    ],
+    "answer": 1,
+    "explanation": "`querySelector()` returns the first match."
+  },
+  {
+    "question": "Which method is used to select an element by ID?",
+    "options": [
+      "getElementById()",
+      "querySelector()",
+      "getElementByClass()",
+      "getElement()"
+    ],
+    "answer": 0,
+    "explanation": "`document.getElementById('id')` selects element by ID."
+  },
+  {
+    "question": "What will `document.querySelector('p')` return?",
+    "options": [
+      "All p tags",
+      "The first p tag",
+      "null",
+      "An array of p tags"
+    ],
+    "answer": 1,
+    "explanation": "`querySelector()` returns the first match."
+  },
+  {
+    "question": "Which method is used to select an element by ID?",
+    "options": [
+      "getElementById()",
+      "querySelector()",
+      "getElementByClass()",
+      "getElement()"
+    ],
+    "answer": 0,
+    "explanation": "`document.getElementById('id')` selects element by ID."
+  },
+  {
+    "question": "What will `document.querySelector('p')` return?",
+    "options": [
+      "All p tags",
+      "The first p tag",
+      "null",
+      "An array of p tags"
+    ],
+    "answer": 1,
+    "explanation": "`querySelector()` returns the first match."
+  },
+  {
+    "question": "Which method is used to select an element by ID?",
+    "options": [
+      "getElementById()",
+      "querySelector()",
+      "getElementByClass()",
+      "getElement()"
+    ],
+    "answer": 0,
+    "explanation": "`document.getElementById('id')` selects element by ID."
+  },
+  {
+    "question": "What will `document.querySelector('p')` return?",
+    "options": [
+      "All p tags",
+      "The first p tag",
+      "null",
+      "An array of p tags"
+    ],
+    "answer": 1,
+    "explanation": "`querySelector()` returns the first match."
+  },
+  {
+    "question": "Which method is used to select an element by ID?",
+    "options": [
+      "getElementById()",
+      "querySelector()",
+      "getElementByClass()",
+      "getElement()"
+    ],
+    "answer": 0,
+    "explanation": "`document.getElementById('id')` selects element by ID."
+  },
+  {
+    "question": "What will `document.querySelector('p')` return?",
+    "options": [
+      "All p tags",
+      "The first p tag",
+      "null",
+      "An array of p tags"
+    ],
+    "answer": 1,
+    "explanation": "`querySelector()` returns the first match."
+  },
+  {
+    "question": "Which method is used to select an element by ID?",
+    "options": [
+      "getElementById()",
+      "querySelector()",
+      "getElementByClass()",
+      "getElement()"
+    ],
+    "answer": 0,
+    "explanation": "`document.getElementById('id')` selects element by ID."
+  },
+  {
+    "question": "What will `document.querySelector('p')` return?",
+    "options": [
+      "All p tags",
+      "The first p tag",
+      "null",
+      "An array of p tags"
+    ],
+    "answer": 1,
+    "explanation": "`querySelector()` returns the first match."
+  },
+  {
+    "question": "What event is triggered when a user types in an input field?",
+    "options": [
+      "onchange",
+      "oninput",
+      "onkeyup",
+      "onkeydown"
+    ],
+    "answer": 1,
+    "explanation": "`oninput` is triggered for every keystroke in input field."
+  },
+  {
+    "question": "Which method is used to add a click handler?",
+    "options": [
+      "element.click()",
+      "element.onClick()",
+      "element.addEventListener()",
+      "element.trigger()"
+    ],
+    "answer": 2,
+    "explanation": "`addEventListener('click', callback)` is the correct approach."
+  },
+  {
+    "question": "What event is triggered when a user types in an input field?",
+    "options": [
+      "onchange",
+      "oninput",
+      "onkeyup",
+      "onkeydown"
+    ],
+    "answer": 1,
+    "explanation": "`oninput` is triggered for every keystroke in input field."
+  },
+  {
+    "question": "Which method is used to add a click handler?",
+    "options": [
+      "element.click()",
+      "element.onClick()",
+      "element.addEventListener()",
+      "element.trigger()"
+    ],
+    "answer": 2,
+    "explanation": "`addEventListener('click', callback)` is the correct approach."
+  },
+  {
+    "question": "What event is triggered when a user types in an input field?",
+    "options": [
+      "onchange",
+      "oninput",
+      "onkeyup",
+      "onkeydown"
+    ],
+    "answer": 1,
+    "explanation": "`oninput` is triggered for every keystroke in input field."
+  },
+  {
+    "question": "Which method is used to add a click handler?",
+    "options": [
+      "element.click()",
+      "element.onClick()",
+      "element.addEventListener()",
+      "element.trigger()"
+    ],
+    "answer": 2,
+    "explanation": "`addEventListener('click', callback)` is the correct approach."
+  },
+  {
+    "question": "What event is triggered when a user types in an input field?",
+    "options": [
+      "onchange",
+      "oninput",
+      "onkeyup",
+      "onkeydown"
+    ],
+    "answer": 1,
+    "explanation": "`oninput` is triggered for every keystroke in input field."
+  },
+  {
+    "question": "Which method is used to add a click handler?",
+    "options": [
+      "element.click()",
+      "element.onClick()",
+      "element.addEventListener()",
+      "element.trigger()"
+    ],
+    "answer": 2,
+    "explanation": "`addEventListener('click', callback)` is the correct approach."
+  },
+  {
+    "question": "What event is triggered when a user types in an input field?",
+    "options": [
+      "onchange",
+      "oninput",
+      "onkeyup",
+      "onkeydown"
+    ],
+    "answer": 1,
+    "explanation": "`oninput` is triggered for every keystroke in input field."
+  },
+  {
+    "question": "Which method is used to add a click handler?",
+    "options": [
+      "element.click()",
+      "element.onClick()",
+      "element.addEventListener()",
+      "element.trigger()"
+    ],
+    "answer": 2,
+    "explanation": "`addEventListener('click', callback)` is the correct approach."
+  },
+  {
+    "question": "What event is triggered when a user types in an input field?",
+    "options": [
+      "onchange",
+      "oninput",
+      "onkeyup",
+      "onkeydown"
+    ],
+    "answer": 1,
+    "explanation": "`oninput` is triggered for every keystroke in input field."
+  },
+  {
+    "question": "Which method is used to add a click handler?",
+    "options": [
+      "element.click()",
+      "element.onClick()",
+      "element.addEventListener()",
+      "element.trigger()"
+    ],
+    "answer": 2,
+    "explanation": "`addEventListener('click', callback)` is the correct approach."
+  },
+  {
+    "question": "What event is triggered when a user types in an input field?",
+    "options": [
+      "onchange",
+      "oninput",
+      "onkeyup",
+      "onkeydown"
+    ],
+    "answer": 1,
+    "explanation": "`oninput` is triggered for every keystroke in input field."
+  },
+  {
+    "question": "Which method is used to add a click handler?",
+    "options": [
+      "element.click()",
+      "element.onClick()",
+      "element.addEventListener()",
+      "element.trigger()"
+    ],
+    "answer": 2,
+    "explanation": "`addEventListener('click', callback)` is the correct approach."
+  },
+  {
+    "question": "What event is triggered when a user types in an input field?",
+    "options": [
+      "onchange",
+      "oninput",
+      "onkeyup",
+      "onkeydown"
+    ],
+    "answer": 1,
+    "explanation": "`oninput` is triggered for every keystroke in input field."
+  },
+  {
+    "question": "Which method is used to add a click handler?",
+    "options": [
+      "element.click()",
+      "element.onClick()",
+      "element.addEventListener()",
+      "element.trigger()"
+    ],
+    "answer": 2,
+    "explanation": "`addEventListener('click', callback)` is the correct approach."
+  },
+  {
+    "question": "What event is triggered when a user types in an input field?",
+    "options": [
+      "onchange",
+      "oninput",
+      "onkeyup",
+      "onkeydown"
+    ],
+    "answer": 1,
+    "explanation": "`oninput` is triggered for every keystroke in input field."
+  },
+  {
+    "question": "Which method is used to add a click handler?",
+    "options": [
+      "element.click()",
+      "element.onClick()",
+      "element.addEventListener()",
+      "element.trigger()"
+    ],
+    "answer": 2,
+    "explanation": "`addEventListener('click', callback)` is the correct approach."
+  },
+  {
+    "question": "What event is triggered when a user types in an input field?",
+    "options": [
+      "onchange",
+      "oninput",
+      "onkeyup",
+      "onkeydown"
+    ],
+    "answer": 1,
+    "explanation": "`oninput` is triggered for every keystroke in input field."
+  },
+  {
+    "question": "Which method is used to add a click handler?",
+    "options": [
+      "element.click()",
+      "element.onClick()",
+      "element.addEventListener()",
+      "element.trigger()"
+    ],
+    "answer": 2,
+    "explanation": "`addEventListener('click', callback)` is the correct approach."
+  }
+];
+    let current = 0;
+    let score = 0;
+    let answers = JSON.parse(localStorage.getItem('js_mcq_answers')) || [];
+    let timeLeft = 6000; // 10 minutes
+
+    function renderQuestion() {
+      if (current >= questions.length) return showResults();
+      const q = questions[current];
+      document.getElementById('question').innerText = `Q${current + 1}: ${q.question}`;
+      const savedAnswer = answers[current]?.selected;
+      const optionsHTML = q.options.map((opt, i) => 
+        `<div class="option">
+          <label>
+            <input type="radio" name="opt" value="${i}" ${savedAnswer === opt ? 'checked disabled' : ''} onchange="enableCheck()"> ${opt}
+          </label>
+        </div>`
+      ).join('');
+      document.getElementById('options').innerHTML = optionsHTML;
+      document.getElementById('explanation').innerHTML = '';
+      document.getElementById('checkBtn').style.display = savedAnswer ? 'none' : 'inline-block';
+      document.getElementById('nextBtn').disabled = !savedAnswer;
+      if (savedAnswer) showExplanation(savedAnswer);
+    }
+
+    function enableCheck() {
+      document.getElementById('checkBtn').disabled = false;
+    }
+
+    function checkAnswer() {
+      const selected = document.querySelector('input[name="opt"]:checked');
+      if (!selected) return alert("Please select an option");
+
+      const selectedValue = parseInt(selected.value);
+      const q = questions[current];
+      const isCorrect = selectedValue === q.answer;
+      if (isCorrect) score++;
+
+      const answerRecord = {
+        question: q.question,
+        selected: q.options[selectedValue],
+        correct: q.options[q.answer],
+        explanation: q.explanation,
+        isCorrect
+      };
+      answers[current] = answerRecord;
+      localStorage.setItem('js_mcq_answers', JSON.stringify(answers));
+      showExplanation(q.options[selectedValue]);
+      document.getElementById('checkBtn').style.display = 'none';
+      document.getElementById('nextBtn').disabled = false;
+      renderQuestion();
+    }
+
+    function showExplanation(userAnswer) {
+      const q = questions[current];
+      const isCorrect = userAnswer === q.options[q.answer];
+      document.getElementById('explanation').innerHTML = `<strong>${isCorrect ? 'Correct!' : 'Wrong!'}</strong><br>
+        Your answer: ${userAnswer}<br>
+        Correct answer: ${q.options[q.answer]}<br>
+        Explanation: ${q.explanation}`;
+    }
+
+    function nextQuestion() {
+      if (current < questions.length - 1) {
+        current++;
+        renderQuestion();
+      } else {
+        showResults();
+      }
+    }
+
+    function prevQuestion() {
+      if (current > 0) {
+        current--;
+        renderQuestion();
+      }
+    }
+
+    function showResults() {
+      score = answers.reduce((acc, curr, i) => {
+        const correct = questions[i].options[questions[i].answer];
+        return curr && curr.selected === correct ? acc + 1 : acc;
+      }, 0);
+
+      document.getElementById('quiz-container').style.display = 'none';
+      const resultContainer = document.getElementById('result-container');
+      resultContainer.style.display = 'block';
+      document.getElementById('score').innerText = `You scored ${score} out of ${questions.length}`;
+
+      const list = document.getElementById('answers-list');
+      list.innerHTML = '';
+      answers.forEach((ans, i) => {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>Q${i+1}:</strong> ${ans.question}<br>
+          <span class="${ans.isCorrect ? 'correct' : 'incorrect'}">
+            Your answer: ${ans.selected} (${ans.isCorrect ? 'Correct' : 'Wrong'})
+          </span><br>
+          Correct answer: ${ans.correct}<br>
+          Explanation: ${ans.explanation}`;
+        list.appendChild(li);
+      });
+    }
+
+    function updateTimer() {
+      const mins = Math.floor(timeLeft / 60);
+      const secs = timeLeft % 60;
+      document.getElementById('timer').innerText = `Time left: ${mins}:${secs < 10 ? '0' + secs : secs}`;
+      timeLeft--;
+      if (timeLeft < 0) showResults();
+    }
+
+    window.onload = function() {
+      renderQuestion();
+      setInterval(updateTimer, 1000);
+    };
+  </script>
+</body>
+</html>
